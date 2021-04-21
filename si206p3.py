@@ -5,6 +5,7 @@ import sqlite3
 import json
 import os
 import matplotlib.pyplot as plt
+import seaborn as sns
 
 #SI206 Final Project
 #Names: Grace Ho, Aaron Huang
