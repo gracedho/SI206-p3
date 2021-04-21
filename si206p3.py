@@ -24,6 +24,11 @@ def grab_data(url):
     pass
 
 def database(data):
+    cur, conn = setUpDatabase('')
+    #create table
+    cur.execute("DROP TABLE IF EXISTS ")
+    cur.execute("CREATE TABLE ()")
+    #insert data into table
     pass
 
 #Process the data
