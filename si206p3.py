@@ -19,10 +19,18 @@ def setUpDatabase(db_name):
     return cur, conn
 
 #return the data in a dictionary or json
-def grab_data(url):
-    r = requests.get(url)
-    r.json()
+def coingecko(url):
+    resp = requests.get('https://www.coingecko.com/api/documentations/v3/swagger.json')
+    # data = url
     pass
+
+def coindesk(code):
+    #use string manip to put in code for currency 
+    pass
+
+
+#json: https://www.coingecko.com/api/documentations/v3/swagger.json
+#json: https://api.coindesk.com/v1/bpi/currentprice/<CODE>.json
 
 def database(data):
     cur, conn = setUpDatabase('')
@@ -30,7 +38,10 @@ def database(data):
     cur.execute("DROP TABLE IF EXISTS ")
     cur.execute("CREATE TABLE ()")
     #insert data into table
+    cur.execute('INSERT INTO')
     pass
+
+#probably gonna have to create multiple tables and then join the data
 
 #Process the data
 #Calculate from database.(20) Do at least one database join to select data.(20) Write out calculated data to a file as text.(10)
