@@ -11,7 +11,7 @@ import seaborn as sns
 #Names: Grace Ho, Aaron Huang
 coin = ['bitcoin', 'ethereum', 'litecoin']
 
-#Gather the data and save it to a single database
+#Gather the data and save it to a single database :)
 def setUpDatabase(db_name):
     path = os.path.dirname(os.path.abspath(__file__))
     conn = sqlite3.connect(path+'/'+db_name)
@@ -60,8 +60,9 @@ def marketdata(currency):
             d[num] = lst
     return d
     
+    
 def database(data):
-    cur, conn = setUpDatabase('')
+    cur, conn = setUpDatabase('bitcoin.db')
     #create table
     cur.execute("DROP TABLE IF EXISTS bitcoin")
     cur.execute("CREATE TABLE bitcoin ('day' INTEGER PRIMARY KEY, 'prices' REAL, 'market_cap' REAL, 'total_volume' REAL)")
@@ -71,7 +72,7 @@ def database(data):
         prices = data[item][0]
         market_cap = data[item][1]
         total_volume = data[item][2]
-    cur.execute('INSERT INTO bitcoin (day, prices, market_cap, total_volume) VALUES({}, {}, {}, {}).'.format(day, prices, market_cap, total_volume))
+        cur.execute('INSERT INTO bitcoin (day, prices, market_cap, total_volume) VALUES({}, {}, {}, {})'.format(day, prices, market_cap, total_volume))
     conn.commit()
 
 #probably gonna have to create multiple tables and then join the data
@@ -84,8 +85,6 @@ def calculate():
 
 #Visualize data
 
-def viz(data):
-    pass
 
 #Maybe use matplotlib?
 def matplot(data):
@@ -104,10 +103,11 @@ def matplot(data):
     pass
 
 #Testing:
+data = marketdata("usd")
 coingecko("usd")
 rates("USD", "GBP")
-marketdata("usd")
-# viz(data)
+
+database(data)
 
 # def main():
 #     conn.close()
