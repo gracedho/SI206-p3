@@ -50,7 +50,6 @@ def marketdata(currency):
         'days' : '7'
     })
     data = resp.json()
-    print(data)
     d = {}
     for key in data:
         for num, item in enumerate(data[key]):
@@ -59,20 +58,21 @@ def marketdata(currency):
                 lst = d[num]
             lst.append(item[1])
             d[num] = lst
-    # print(d)
+    return d
     
-
-#json: https://www.coingecko.com/api/documentations/v3/swagger.json
-#json: https://api.coindesk.com/v1/bpi/currentprice/<CODE>.json
-
 def database(data):
     cur, conn = setUpDatabase('')
     #create table
-    cur.execute("DROP TABLE IF EXISTS ")
-    cur.execute("CREATE TABLE ()")
+    cur.execute("DROP TABLE IF EXISTS bitcoin")
+    cur.execute("CREATE TABLE bitcoin ('day' INTEGER PRIMARY KEY, 'prices' REAL, 'market_cap' REAL, 'total_volume' REAL)")
     #insert data into table
-    cur.execute('INSERT INTO')
-    pass
+    for item in data:
+        day = item
+        prices = data[item][0]
+        market_cap = data[item][1]
+        total_volume = data[item][2]
+    cur.execute('INSERT INTO bitcoin (day, prices, market_cap, total_volume) VALUES({}, {}, {}, {}).'.format(day, prices, market_cap, total_volume))
+    conn.commit()
 
 #probably gonna have to create multiple tables and then join the data
 
