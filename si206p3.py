@@ -20,8 +20,7 @@ def setUpDatabase(db_name):
 
 #return the data in a dictionary or json
 
-def coingecko():
-    currency = input("Enter a currency code:")
+def coingecko(currency):
     resp = requests.get('https://api.coingecko.com/api/v3/simple/price', params = { 
         "ids" : 'bitcoin',
         "vs_currencies" : currency 
@@ -34,12 +33,17 @@ def coingecko():
 #vs currency = usd
 #returns in a nested dict
 
-def coindesk(code):
+def rates(base, symbol):
     #use string manip to put in code for currency 
-    #resp = requests.get('https://api.coindesk.com/v1/bpi/currentprice.json', params = {
-    #    "code" : ""
-    #})
-    pass 
+    resp = requests.get('https://api.ratesapi.io/api/latest', params = {
+       "base" : base,
+       "symbols" : symbol
+
+    })
+    data = resp.json()
+    print(data)
+    return data
+    
 
 #json: https://www.coingecko.com/api/documentations/v3/swagger.json
 #json: https://api.coindesk.com/v1/bpi/currentprice/<CODE>.json
@@ -83,7 +87,8 @@ def matplot(data):
     pass
 
 #Testing:
-coingecko()
+coingecko("usd")
+rates("USD", "GBP")
 # database(data)
 # viz(data)
 
