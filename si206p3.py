@@ -9,7 +9,7 @@ import seaborn as sns
 
 #SI206 Final Project
 #Names: Grace Ho, Aaron Huang
-coin = ['bitcoin', '']
+coin = ['bitcoin', 'ethereum', 'litecoin']
 
 #Gather the data and save it to a single database
 def setUpDatabase(db_name):
@@ -43,7 +43,9 @@ def rates(base, symbol):
     data = resp.json()
     print(data)
     return data
-    
+
+def marketdata(currency):
+    resp = requests.get('https://api.coingecko.com/api/v3/coins/')
 
 #json: https://www.coingecko.com/api/documentations/v3/swagger.json
 #json: https://api.coindesk.com/v1/bpi/currentprice/<CODE>.json
