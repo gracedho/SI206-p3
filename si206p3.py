@@ -45,7 +45,22 @@ def rates(base, symbol):
     return data
 
 def marketdata(currency):
-    resp = requests.get('https://api.coingecko.com/api/v3/coins/')
+    resp = requests.get('https://api.coingecko.com/api/v3/coins/bitcoin/market_chart', params = {
+        'vs_currency' : currency,
+        'days' : '7'
+    })
+    data = resp.json()
+    print(data)
+    d = {}
+    for key in data:
+        for num, item in enumerate(data[key]):
+            lst = []
+            if num in d:
+                lst = d[num]
+            lst.append(item[1])
+            d[num] = lst
+    # print(d)
+    
 
 #json: https://www.coingecko.com/api/documentations/v3/swagger.json
 #json: https://api.coindesk.com/v1/bpi/currentprice/<CODE>.json
@@ -91,7 +106,7 @@ def matplot(data):
 #Testing:
 coingecko("usd")
 rates("USD", "GBP")
-# database(data)
+marketdata("usd")
 # viz(data)
 
 # def main():
