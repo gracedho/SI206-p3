@@ -20,8 +20,8 @@ def setUpDatabase(db_name):
 
 #return the data in a dictionary or json
 def grab_data(url):
-    resp = requests.get(url)
-    soup = BeautifulSoup(resp.content, 'html.parser')
+    r = requests.get(url)
+    r.json()
     pass
 
 def database(data):
