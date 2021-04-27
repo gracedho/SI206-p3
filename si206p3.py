@@ -19,15 +19,18 @@ def setUpDatabase(db_name):
     return cur, conn
 
 #return the data in a dictionary or json
-def grab_data(url):
+def coingecko(url):
     resp = requests.get('https://www.coingecko.com/api/documentations/v3/swagger.json')
-    #try and except convert to json
-    # try:
-    #     resp = resp.json()
+    # data = url
+    pass
+
+def coindesk(code):
+    #use string manip to put in code for currency 
     pass
 
 
 #json: https://www.coingecko.com/api/documentations/v3/swagger.json
+#json: https://api.coindesk.com/v1/bpi/currentprice/<CODE>.json
 
 def database(data):
     cur, conn = setUpDatabase('')
