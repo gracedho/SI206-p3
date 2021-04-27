@@ -20,9 +20,10 @@ def setUpDatabase(db_name):
 
 #return the data in a dictionary or json
 def grab_data(url):
-    resp = requests.get(url)
-    soup = BeautifulSoup(resp.content, 'html.parser')
+    resp = requests.get('https://www.coingecko.com/api/documentations/v3/swagger.json')
     pass
+
+#json: https://www.coingecko.com/api/documentations/v3/swagger.json
 
 def database(data):
     cur, conn = setUpDatabase('')
