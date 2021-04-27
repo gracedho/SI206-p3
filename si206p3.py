@@ -21,7 +21,11 @@ def setUpDatabase(db_name):
 #return the data in a dictionary or json
 def grab_data(url):
     resp = requests.get('https://www.coingecko.com/api/documentations/v3/swagger.json')
+    #try and except convert to json
+    # try:
+    #     resp = resp.json()
     pass
+
 
 #json: https://www.coingecko.com/api/documentations/v3/swagger.json
 
@@ -31,7 +35,10 @@ def database(data):
     cur.execute("DROP TABLE IF EXISTS ")
     cur.execute("CREATE TABLE ()")
     #insert data into table
+    cur.execute('INSERT INTO')
     pass
+
+#probably gonna have to create multiple tables and then join the data
 
 #Process the data
 #Calculate from database.(20) Do at least one database join to select data.(20) Write out calculated data to a file as text.(10)
