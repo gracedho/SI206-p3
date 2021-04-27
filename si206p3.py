@@ -19,12 +19,26 @@ def setUpDatabase(db_name):
     return cur, conn
 
 #return the data in a dictionary or json
+<<<<<<< Updated upstream
 def coingecko(currency):
     resp = requests.get('https://api.coingecko.com/api/v3/simple/price', params = { 
         "ids" : 'bitcoin',
+=======
+<<<<<<< HEAD
+def coingecko():
+    currency = input('Enter a currency code (ex. usd):')
+    resp = requests.get('https://api.coingecko.com/api/v3/simple/price', params = { 
+        "ids" : "bitcoin",
+=======
+def coingecko(currency):
+    resp = requests.get('https://api.coingecko.com/api/v3/simple/price', params = { 
+        "ids" : 'bitcoin',
+>>>>>>> 00f236f5170fc0e298e85c5df4ac323f93cd7c54
+>>>>>>> Stashed changes
         "vs_currencies" : currency 
         })
     data = resp.json()
+    print(data)
     return data
 
 #bitcoin = id
@@ -80,7 +94,7 @@ def matplot(data):
     pass
 
 #Testing:
-coingecko('bitcoin', 'usd')
+coingecko()
 # database(data)
 # viz(data)
 
