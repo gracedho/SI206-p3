@@ -28,7 +28,9 @@ I am Dr. Bakare Tunde, the cousin of Nigerian Astronaut, Air Force Major Abacha 
 
 In the 31 years since he has been on the station, he has accumulated flight pay and interest amounting to almost 5.71 billion Nigerian Naira. This is held in a trust at the Lagos National Savings and Trust Association. If we can obtain access to this money, we can place a down payment with the Russian Space Authorities for a Soyuz return flight to bring him back to Earth. I am told this will cost 1.14 billion Nigerian Naira. In order to access his trust fund, we need your assistance.
 
-However, the Russian Space Authorities need the amount transferred to them to be in American dollars. We must keep this transaction under the radar. In order to do this, we ask you to take the Nigerian Naira amount from us, convert it into Bitcoin, and then take that amount in Bitcoin to convert to American dollars.
+However, the Russian Space Authorities need the amount transferred to them to be in Russian Rubles. We must keep this transaction under the radar. In order to do this, we ask you to take the Nigerian Naira amount from us, convert it to a Bitcoin amount, and then take that amount in Bitcoin to convert to American dollars. Then take this amount in USD and convert it into Russian Rubles. We are doing this to throw people off of our trail. 
+
+However, we want to get into cryptocurrency as well! Please research Bitcoin, Ethereum, and Litecoin and their historical market data over the past 14 days. Then find the average 24-hour volume for all 3 of these cryptocurrencies to see if this is something we would be interested in getting into.
 
 Consequently, my colleagues and I are willing to transfer the total amount to your account or subsequent disbursement, since we, as civil servants, are prohibited by the Code of Conduct Bureau (Civil Service Laws) from opening and/or operating foreign accounts in our names.
 
