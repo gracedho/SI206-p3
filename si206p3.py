@@ -19,10 +19,17 @@ def setUpDatabase(db_name):
     return cur, conn
 
 #return the data in a dictionary or json
-def coingecko(url):
-    resp = requests.get('https://www.coingecko.com/api/documentations/v3/swagger.json')
-    # data = url
-    pass
+def coingecko(id, currency):
+    resp = requests.get('https://api.coingecko.com/api/v3/simple/price', params = { 
+        "ids" : id,
+        "vs_currencies" : currency 
+        })
+    data = resp.json()
+    return data
+
+#bitcoin = id
+#vs currency = usd
+#returns in a nested dict
 
 def coindesk(code):
     #use string manip to put in code for currency 
@@ -71,7 +78,7 @@ def matplot(data):
     pass
 
 #Testing:
-# data = grab_data("")
+coingecko('bitcoin', 'usd')
 # database(data)
 # viz(data)
 
