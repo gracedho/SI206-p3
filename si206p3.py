@@ -19,9 +19,9 @@ def setUpDatabase(db_name):
     return cur, conn
 
 #return the data in a dictionary or json
-def coingecko(id, currency):
+def coingecko(currency):
     resp = requests.get('https://api.coingecko.com/api/v3/simple/price', params = { 
-        "ids" : id,
+        "ids" : 'bitcoin',
         "vs_currencies" : currency 
         })
     data = resp.json()
@@ -33,8 +33,10 @@ def coingecko(id, currency):
 
 def coindesk(code):
     #use string manip to put in code for currency 
-    pass
-
+    #resp = requests.get('https://api.coindesk.com/v1/bpi/currentprice.json', params = {
+    #    "code" : ""
+    #})
+    pass 
 
 #json: https://www.coingecko.com/api/documentations/v3/swagger.json
 #json: https://api.coindesk.com/v1/bpi/currentprice/<CODE>.json
