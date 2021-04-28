@@ -10,14 +10,12 @@ import seaborn as sns
 #Names: Grace Ho, Aaron Huang
 
 
-#Gather the data and save it to a single database :)
+#Gather the data and save it to a single database 
 def setUpDatabase(db_name):
 	path = os.path.dirname(os.path.abspath(__file__))
 	conn = sqlite3.connect(path+'/'+db_name)
 	cur = conn.cursor()
 	return cur, conn
-
-#return the data in a dictionary or json
 
 def coingecko(currency):
 	resp = requests.get('https://api.coingecko.com/api/v3/simple/price', params = { 
@@ -25,22 +23,16 @@ def coingecko(currency):
 		"vs_currencies" : currency 
 		})
 	data = resp.json()
-	print(data)
 	return data
 
-#bitcoin = id
-#vs currency = usd
-#returns in a nested dict
 
 def rates(base, symbol):
-	#use string manip to put in code for currency 
 	resp = requests.get('https://api.ratesapi.io/api/latest', params = {
 	   "base" : base,
 	   "symbols" : symbol
 
 	})
 	data = resp.json()
-	print(data)
 	return data
 
 def marketdata(currency):
@@ -73,8 +65,6 @@ def database(data):
 		total_volume = data[item][2]
 		cur.execute('INSERT INTO bitcoin (day, prices, market_cap, total_volume) VALUES({}, {}, {}, {})'.format(day, prices, market_cap, total_volume))
 	conn.commit()
-
-#probably gonna have to create multiple tables and then join the data
 
 #Process the data
 #Calculate from database.(20) Do at least one database join to select data.(20) Write out calculated data to a file as text.(10)
@@ -112,32 +102,72 @@ def profits():
 	return averages
 
 #Visualize data
-
-
-#Maybe use matplotlib?
-def matplot(data):
-	x = []
-	y = []
-	for key in data:
-		x.append(key)
-		y.append(data[key])
+def line():
+	y = calculate()
+	x = range(len(y))
 	x_pos = [i for i, _ in enumerate(x)]
-	plt.bar(x_pos, y, color ='red')
-	plt.xlabel('x axis label')
-	plt.ylabel('y axis label')
-	plt.title('title')
+	plt.plot(y, color = 'b')
+	plt.xlabel('Week Numbers')
+	plt.ylabel('24hr Volume Averages')
+	plt.title('Weekly Averages of 24hr Trading Volumes')
 	plt.xticks(x_pos, x)
 	plt.show()
-	pass
+	
 
-#Testing:
+
+def bar():
+	y = profits()
+	x = range(len(y))
+	x_pos = [i for i, _ in enumerate(x)]
+	plt.bar(x_pos, y, color ='purple')
+	plt.xlabel('Week Numbers')
+	plt.ylabel('Average Price of Bitcoin')
+	plt.title('Weekly Average Price of Bitcoin')
+	plt.xticks(x_pos, x)
+	plt.show()
+
+
+
+
 data = marketdata("usd")
-coingecko("usd")
-rates("USD", "GBP")
-calculate()
-profits()
+coingecko("ngn")
+coingecko('usd')
+rates("USD", "RUB")
 database(data)
+bar()
+line()
+print("The conversion rate of Nigerian Naira to Bitcoin is ")
+print(coingecko('ngn')['bitcoin']['ngn'])
+print("Nairas for 1 Bitcoin")
+print()
+print("The conversion rate of Bitcoin to American Dollars is 1 Bitcoin for ")
+print(coingecko('usd')['bitcoin']['usd'])
+print("American Dollars")
+print()
+print("The conversion rate of American Dollars to Russian Rubles is 1 American Dollar for")
+print(rates('USD', 'RUB')['rates']['RUB'])
+print("Russian Rubles")
+print()
+print("5,710,000,000 billion Nigerian Naira is equal to ")
+print(str(5710000000/(coingecko('ngn')['bitcoin']['ngn'])))
+print("Bitcoins")
+print()
+print(str(5710000000/(coingecko('ngn')['bitcoin']['ngn'])))
+print("Bitcoins is equal to ")
+print(str((5710000000/(coingecko('ngn')['bitcoin']['ngn']))*(coingecko('usd')['bitcoin']['usd'])))
+print("American Dollars")
+print()
+print(str((5710000000/(coingecko('ngn')['bitcoin']['ngn']))*(coingecko('usd')['bitcoin']['usd'])))
+print("American Dollars is equal to ")
+print(str((5710000000/(coingecko('ngn')['bitcoin']['ngn']))*(coingecko('usd')['bitcoin']['usd'])*(rates('USD', 'RUB')['rates']['RUB'])))
+print("Russian Rubles")
+print()
+print("The amount owed to me is ")
+print(str((5710000000/(coingecko('ngn')['bitcoin']['ngn']))*(coingecko('usd')['bitcoin']['usd'])*(0.2)))
+print("American Dollars")
+print()
+print("The amount paid to the Russian Space Authorities is")
+print(str((5710000000/(coingecko('ngn')['bitcoin']['ngn']))*(coingecko('usd')['bitcoin']['usd'])*(rates('USD', 'RUB')['rates']['RUB'])*(0.2)))
+print("Russian Rubles")
 
-# def main():
-#     conn.close()
-#     pass
+
