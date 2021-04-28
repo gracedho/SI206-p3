@@ -5,7 +5,7 @@ Group Name: 黄河 Huang He
 
 Aaron Huang ahuanga@umich.edu, Grace Ho gracedh@umich.edu
 
-API:    CoinDesk: https://api.coindesk.com/v1/bpi/currentprice/<CODE>.json
+API:    Exchange Rates: https://api.ratesapi.io/api/latest
 CoinGecko: https://api.coingecko.com/api/v3/ 
 
 We will be getting the bitcoin price in USD of each supported bitcoin type from the CoinDesk API and the exchange rate of USD to another currency from the CoinGecko API.
