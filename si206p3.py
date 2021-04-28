@@ -9,7 +9,7 @@ import seaborn as sns
 
 #SI206 Final Project
 #Names: Grace Ho, Aaron Huang
-coin = ['bitcoin', 'ethereum', 'litecoin']
+
 
 #Gather the data and save it to a single database :)
 def setUpDatabase(db_name):
