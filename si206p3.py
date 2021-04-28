@@ -95,29 +95,47 @@ def calculate():
 	conn.commit()
 	return averages
 
+def profits():
+	cur, conn = setUpDatabase('bitcoin.db')
+	avg = cur.execute('SELECT prices FROM bitcoin').fetchall()
+	averages = []
+	count = 0
+	total = 0
+	for num in avg:
+		if count >= 7:
+			averages.append(float(total / 7))
+			count = 0
+			total = 0
+		total += num[0]
+		count +=1 
+	conn.commit()
+	return averages
+
 #Visualize data
 
 
-#data is a list of values
-def line(values):
-	x = range(len(values))
-	y = values
+#Maybe use matplotlib?
+def matplot(data):
+	x = []
+	y = []
+	for key in data:
+		x.append(key)
+		y.append(data[key])
 	x_pos = [i for i, _ in enumerate(x)]
-	plt.plot(y, color = 'r')
-	plt.xlabel('Week Number')
-	plt.ylabel('24hr Volume Average')
-	plt.title('Weekly Averages of 24hr Trading Volume')
+	plt.bar(x_pos, y, color ='red')
+	plt.xlabel('x axis label')
+	plt.ylabel('y axis label')
+	plt.title('title')
 	plt.xticks(x_pos, x)
 	plt.show()
-
-
+	pass
 
 #Testing:
 data = marketdata("usd")
 coingecko("usd")
 rates("USD", "GBP")
-values = calculate()
-line(values)
+calculate()
+profits()
 database(data)
 
 # def main():
