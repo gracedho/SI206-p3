@@ -98,28 +98,26 @@ def calculate():
 #Visualize data
 
 
-#Maybe use matplotlib?
-def matplot(data):
-	x = []
-	y = []
-	for key in data:
-		x.append(key)
-		y.append(data[key])
+#data is a list of values
+def line(values):
+	x = range(len(values))
+	y = values
 	x_pos = [i for i, _ in enumerate(x)]
-	plt.bar(x_pos, y, color ='red')
-	plt.xlabel('x axis label')
-	plt.ylabel('y axis label')
-	plt.title('title')
+	plt.plot(y, color = 'r')
+	plt.xlabel('Week Number')
+	plt.ylabel('24hr Volume Average')
+	plt.title('Weekly Averages of 24hr Trading Volume')
 	plt.xticks(x_pos, x)
 	plt.show()
-	pass
+
+
 
 #Testing:
 data = marketdata("usd")
 coingecko("usd")
 rates("USD", "GBP")
-calculate()
-
+values = calculate()
+line(values)
 database(data)
 
 # def main():
