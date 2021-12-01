@@ -10,7 +10,6 @@ Exchange Rates: https://api.ratesapi.io/api/latest
 
 CoinGecko: https://api.coingecko.com/api/v3/ 
 
-Visualization: Seaborn Visualization Package
 
 
 Group Name: 黄河 Huang He 
